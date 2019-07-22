@@ -1,0 +1,12 @@
+[submodule "hello-reason"]
+	path = hello-reason
+	url = https://github.com/esy-ocaml/hello-reason.git
+[submodule "hello-ocaml"]
+	path = hello-ocaml
+	url = https://github.com/esy-ocaml/hello-ocaml.git
+[submodule "iterators_bench"]
+	path = iterators_bench
+	url = https://github.com/c-cube/iterators_bench.git
+[submodule "iter"]
+	path = iter
+	url = https://github.com/c-cube/iter.git

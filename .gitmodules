@@ -10,3 +10,6 @@
 [submodule "iter"]
 	path = iter
 	url = https://github.com/c-cube/iter.git
+[submodule "the-little-ocamler"]
+	path = the-little-ocamler
+	url = https://github.com/steinuil/the-little-ocamler.git

@@ -13,3 +13,9 @@
 [submodule "the-little-ocamler"]
 	path = the-little-ocamler
 	url = https://github.com/steinuil/the-little-ocamler.git
+[submodule "realworldocaml/examples"]
+	path = realworldocaml/examples
+	url = https://github.com/realworldocaml/examples.git
+[submodule "realworldocaml/book"]
+	path = realworldocaml/book
+	url = https://github.com/realworldocaml/book.git

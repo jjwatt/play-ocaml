@@ -1,3 +1,5 @@
+open Core
+
 let rec insert lst x =
   match lst with
   |  [] -> [x]

@@ -19,3 +19,6 @@
 [submodule "realworldocaml/book"]
 	path = realworldocaml/book
 	url = https://github.com/realworldocaml/book.git
+[submodule "oseq"]
+	path = oseq
+	url = https://github.com/c-cube/oseq.git

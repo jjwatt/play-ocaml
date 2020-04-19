@@ -12,6 +12,7 @@ pkgs.mkShell {
     core
     findlib
     merlin
+    ocp-indent
     utop
   ];
 }

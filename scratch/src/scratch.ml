@@ -41,6 +41,9 @@ let rec revlA l =
   | h::t -> revlA t @ [h]
 ;;
 (* NOTE: It looks so much like a fold_left, but I can't get it to work with fold_left *)
+(* Got it to work with fold_left ! *)
+let revF l = fold_left  (fun x y -> y::x) [] l
+;;
 
 let is_palindromel l =
   l = revl l (* list is equal to revl list *)

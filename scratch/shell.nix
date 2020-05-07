@@ -10,9 +10,15 @@ pkgs.mkShell {
     batteries
     base
     core
+    core_bench
+    dune
     findlib
     merlin
     ocp-indent
+    qcheck
+    qtest
+    result
+    sequence
     utop
   ];
 }

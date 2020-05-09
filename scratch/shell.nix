@@ -18,7 +18,7 @@ pkgs.mkShell {
     qcheck
     qtest
     result
-    sequence
+    # sequence
     utop
   ];
 }

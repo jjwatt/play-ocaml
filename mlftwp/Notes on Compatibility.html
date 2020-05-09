@@ -1,0 +1,38 @@
+
+  Notes on Compatibility
+
+The sample programs rely on the Standard ML Basis Library
+<https://www.cs.princeton.edu/~appel/smlnj/basis/>.
+
+Starting with Chapter 7, they also rely (to a minor extent) on recent
+changes to ML itself. I am distributing the code in a form suitable for
+up-to-date ML compilers, alongside versions of the programs for chapters
+3, 8 and 10 for use with older compilers.Older compilers (pre-1998)
+might be incompatible in three respects:
+
+  * Instead of Real.==(x,y), they might use x=y to test equality on real
+    numbers. This affects code for Chapter 3.
+  * Instead of value polymorphism, they might have weak (imperative)
+    type variables such as '_a. (Chapters 8 and 10.)
+  * Instead of the :> syntax, they might use the abstraction keyword to
+    indicate opaque signature constraints. (Chapters 8 and 10.)
+
+Complicating matters further, in 2004 the ML Basis Library was modified
+slightly. Compilers compliant with the changes reject a few of the
+functions presented in the book. To address this issue, post-2004
+versions of the code for chapters 8 and 9 are provided.
+
+  * The function Substring.all was renamed to Substring.full
+  * The type of the function TextIO.inputLine was changed to return a
+    string option rather than a string. It now returns NONE if the input
+    stream has run out.
+
+Later chapters sometimes refer to code presented in earlier chapters.
+However, if you compile the code for all the chapters in order, there
+should be no compilation errors.
+
+------------------------------------------------------------------------
+
+Back <https://www.cl.cam.ac.uk/~lp15/MLbook/programs/index.html> to ML
+for the Working Programmer, main page
+

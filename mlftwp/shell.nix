@@ -5,8 +5,8 @@ pkgs.mkShell {
   propagatedBuildInputs = (with pkgs; [
   	smlnj
   ]) ++ (with pkgs.ocamlPackages; [
-    batteries
     base
+    core
     ocaml
     findlib
     merlin

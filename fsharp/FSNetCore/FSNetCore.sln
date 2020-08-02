@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{93AA8A6E-9723-4541-9608-060609989B2A}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Library", "src\Library\Library.fsproj", "{F302AC67-2D60-4E77-A24B-93A14ACFFC89}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,5 +18,22 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F302AC67-2D60-4E77-A24B-93A14ACFFC89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F302AC67-2D60-4E77-A24B-93A14ACFFC89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F302AC67-2D60-4E77-A24B-93A14ACFFC89}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F302AC67-2D60-4E77-A24B-93A14ACFFC89}.Debug|x64.Build.0 = Debug|Any CPU
+		{F302AC67-2D60-4E77-A24B-93A14ACFFC89}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F302AC67-2D60-4E77-A24B-93A14ACFFC89}.Debug|x86.Build.0 = Debug|Any CPU
+		{F302AC67-2D60-4E77-A24B-93A14ACFFC89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F302AC67-2D60-4E77-A24B-93A14ACFFC89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F302AC67-2D60-4E77-A24B-93A14ACFFC89}.Release|x64.ActiveCfg = Release|Any CPU
+		{F302AC67-2D60-4E77-A24B-93A14ACFFC89}.Release|x64.Build.0 = Release|Any CPU
+		{F302AC67-2D60-4E77-A24B-93A14ACFFC89}.Release|x86.ActiveCfg = Release|Any CPU
+		{F302AC67-2D60-4E77-A24B-93A14ACFFC89}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F302AC67-2D60-4E77-A24B-93A14ACFFC89} = {93AA8A6E-9723-4541-9608-060609989B2A}
 	EndGlobalSection
 EndGlobal

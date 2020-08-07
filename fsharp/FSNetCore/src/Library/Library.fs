@@ -1,7 +1,7 @@
-﻿namespace Library
+﻿module Library
 
 open Newtonsoft.Json
 
-let getJsonNet value =
-	sprintf "I used to be %s but now I'm %s thanks to JSON.NET!" value (JsonConvert.SerializeObject(value))
+let getJsonNetJson (value : string) : string =
+    sprintf "I used to be %s but now I'm %s thanks to JSON.NET!" value (JsonConvert.SerializeObject(value))
 

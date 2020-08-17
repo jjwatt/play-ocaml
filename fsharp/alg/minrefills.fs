@@ -5,11 +5,16 @@ let minrefills distance tank stations =
         nextStop - lastRefill >= tank
     let allStops = stations @ [distance]
     let rec aux stations last acc =
-        // if (List.head(stations) - last) - tank < 0 then None
+        if (List.head(stations) - last) - tank < 0 then None
+        else
         match stations with
-            | [] -> acc
-            | [curr] -> if needStop last curr then acc + 1 else acc
-            | curr :: tail -> if needStop last curr then aux tail curr acc + 1 else aux tail last acc
+            | [] -> Some(acc)
+            | [curr] -> if needStop last curr
+                          then Some(acc + 1)
+                          else Some(acc)
+            | curr :: tail -> if needStop last curr
+                                then aux tail curr (Some(acc + 1))
+                                else aux tail last (Some(acc))
             in
      aux allStops 0 0
 

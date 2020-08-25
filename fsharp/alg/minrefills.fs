@@ -8,9 +8,13 @@ let minrefills distance tank stations =
         match stations, acc with
             | _, None -> None
             | [], Some(acc) -> Some(acc)
-            | [curr], Some(acc) -> if needStop last curr
-                                   then Some(acc + 1)
-                                   else Some(acc)
+            // | [curr], Some(acc) -> if impossible curr last
+            //                        then None
+            //                        else
+            //                        if needStop last curr
+            //                        then Some(acc + 1)
+            //                        else Some(acc)
+            //| curr :: tail, Some(acc) when impossible curr last -> None
             | curr :: tail, Some(acc) -> if needStop last curr
                                          then aux tail curr (Some(acc + 1))
                                          else aux tail last (Some(acc))

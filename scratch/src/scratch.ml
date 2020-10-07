@@ -118,6 +118,11 @@ module MLftwpTrees = struct
     if n = 0 then Lf
     else Br(k, comptree (2*k) (n-1),
             comptree (2*k+1) (n-1))
+  (* From ex. 4.13 *)
+  let rec compsame x n =
+    if n = 0 then Lf
+    else let t = compsame x (n-1)
+      in Br(x,t,t)
   let rec reflect = function
     | Lf -> Lf
     | Br(v,t1,t2) -> Br(v, reflect t2, reflect t1)
@@ -183,7 +188,7 @@ module MLftwpTrees = struct
       let x2 = List.drop xs k in
       let x1 = List.take xs k in
       let hd = match List.hd x2 with
-        | None -> 0
+        | None -> assert false
         | Some x -> x
       in
       let tl = match List.tl x2 with
@@ -192,7 +197,24 @@ module MLftwpTrees = struct
       in
       Br(hd, balin x1, balin tl)
 
+  (* let rec balin2 = function
+   *   | [] -> Lf
+   *   | xs ->
+   *     let k = (List.length xs) / 2 in
+   *     let x1 = List.take xs k in
+   *     match List.drop xs k with
+   *     | [] -> Br([], balin2 x1, balin2 [])
+   *     | [hd] -> Br(hd, balin2 x1, balin2 [])
+   *     | hd :: tl -> Br(hd, balin2 x1, balin2 tl) *)
+
   let rec balpost xs = reflect (balpre (List.rev xs))
+
+  (* From ex. 4.15 *)
+  let rec isrefl = function
+    | (Lf, Lf) -> true
+    | (Br(x,t1,t2), Br(y,u1,u2)) ->
+      x=y && isrefl (t1,u2) && isrefl (t2,u1)
+    | _ -> false
 
   let birnam = Br("The", Br("wood", Lf,
                             Br("of", Br("Birnam", Lf, Lf),
@@ -205,4 +227,20 @@ module MLftwpTrees = struct
      inorder (reflect tree2)  = List.rev (inorder tree2)
      postorder (reflect tree2) = List.rev (preorder tree2)
   *)
+
+  (* Fold from FPio (Functional Programming in Ocaml) book *)
+  let rec foldtree init op = function
+    | Lf -> init
+    | Br(v,l,r) -> op v (foldtree init op l)(foldtree init op r)
+
+end
+
+module FPio = struct
+  let rec list_max = function
+    | [] -> None
+    | h::t -> begin
+        match list_max t with
+        | None -> Some h
+        | Some m -> Some (max h m)
+      end
 end

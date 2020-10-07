@@ -140,7 +140,8 @@ module MLftwpTrees = struct
   let inorder_lin t =
     let rec in_acc acc = function
       | Lf -> acc
-      | Br(v,t1,t2) -> let int2 = in_acc acc t2 in
+      | Br(v,t1,t2) ->
+        let int2 = in_acc acc t2 in
         let acclist = v::int2 in
         in_acc acclist t1
     in in_acc [] t
@@ -151,10 +152,39 @@ module MLftwpTrees = struct
         let newacc = v::acc in
         post_acc (post_acc newacc t2) t1
     in post_acc [] t
+
+  (* 4.12 Building Trees from a list *)
+  (* To construct balanced trees divide the list of
+     labels roughly in half
+  *)
+  let rec balpre = function
+    | [] -> Lf
+    | x::xs ->
+      let len = List.length xs in
+      let k = len / 2 in
+      Br(x, (balpre (List.take xs k)),
+         (balpre (List.drop xs k)))
+
+  let rec balin = function
+    | [] -> Lf
+    | x::xs ->
+      let k = (List.length xs) / 2 in
+      begin
+        match List.drop xs k with
+        | y::ys ->
+          Br(y, balin (List.take xs k), balin ys)
+        | [] -> Br([], balin (List.take xs k), balin [])
+      end
+
   let birnam = Br("The", Br("wood", Lf,
                             Br("of", Br("Birnam", Lf, Lf),
                                Lf)),
                   Lf)
   let tree2 = Br(2, Br(1,Lf,Lf), Br(3,Lf,Lf))
   let tree5 = Br(5, Br(6,Lf,Lf), Br(7,Lf,Lf))
+  (* MLftwp ex 4.20
+     preorder (reflect tree2) = List.rev (postorder tree2)
+     inorder (reflect tree2)  = List.rev (inorder tree2)
+     postorder (reflect tree2) = List.rev (preorder tree2)
+  *)
 end

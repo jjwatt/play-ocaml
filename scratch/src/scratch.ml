@@ -155,7 +155,11 @@ module MLftwpTrees = struct
 
   (* 4.12 Building Trees from a list *)
   (* To construct balanced trees divide the list of
-     labels roughly in half
+     labels roughly in half. The subtrees may differ
+     in size by at most 1.
+  *)
+  (* To make a balanced tree from a preorder list of labels
+     the first label is attached to the root of the tree.
   *)
   let rec balpre = function
     | [] -> Lf
@@ -165,16 +169,30 @@ module MLftwpTrees = struct
       Br(x, (balpre (List.take xs k)),
          (balpre (List.drop xs k)))
 
+  (* To make a balanced tree from an inorder list of labels
+     the label is taken from the middle.
+     This resembles the top-down merge sort of Section 3.21
+  *)
   let rec balin = function
+    (* This is working with Base.List now,
+       but it's probably not ideal.
+    *)
     | [] -> Lf
-    | x::xs ->
+    | xs ->
       let k = (List.length xs) / 2 in
-      begin
-        match List.drop xs k with
-        | y::ys ->
-          Br(y, balin (List.take xs k), balin ys)
-        | [] -> Br([], balin (List.take xs k), balin [])
-      end
+      let x2 = List.drop xs k in
+      let x1 = List.take xs k in
+      let hd = match List.hd x2 with
+        | None -> 0
+        | Some x -> x
+      in
+      let tl = match List.tl x2 with
+        | None -> []
+        | Some xs -> xs
+      in
+      Br(hd, balin x1, balin tl)
+
+  let rec balpost xs = reflect (balpre (List.rev xs))
 
   let birnam = Br("The", Br("wood", Lf,
                             Br("of", Br("Birnam", Lf, Lf),

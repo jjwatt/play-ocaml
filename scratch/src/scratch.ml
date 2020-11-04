@@ -233,6 +233,9 @@ module MLftwpTrees = struct
     | Lf -> init
     | Br(v,l,r) -> op v (foldtree init op l)(foldtree init op r)
 
+  let sizefold t = foldtree 0 (fun _ l r -> 1 + l + r) t
+  let depthfold t = foldtree 0 (fun _ l r -> 1 + max l r) t
+  let preorderfold t = foldtree [] (fun x l r -> [x] @ l @ r) t
 end
 
 module FPio = struct
